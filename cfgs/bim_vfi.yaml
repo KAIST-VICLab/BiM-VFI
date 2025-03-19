@@ -1,0 +1,74 @@
+exp_name: original
+mode: train
+model:
+  name: bim_vfi
+  args:
+    pyr_level: 3
+    feat_channels: 32
+
+train_dataset:
+  name: vimeo_septuplet
+  args:
+    root_path: ../data/vimeo_septuplet
+    split: train
+    patch_size: 256
+  loader:
+    batch_size: 16
+    num_workers: 8
+
+test_dataset:
+  name: vimeo_septuplet
+  args:
+    root_path: ../data/vimeo_septuplet
+    split: val
+  loader:
+    batch_size: 32
+    num_workers: 8
+  save_imgs: False
+
+optimizer:
+  name: adamW
+  args: { lr: 1.5e-4, weight_decay: 1.e-4 }
+
+lr_scheduler:
+  name: one_cycle_lr
+  args:
+    max_lr: 1.5e-4
+    pct_start: 0.01
+    cycle_momentum: False
+    anneal_strategy: cos
+gradient_clip: 1
+loss:
+  - {
+    name: multiple_charbonnier,
+    args: { weight: 1, gamma: 0.25 }
+  }
+  - {
+    name: multiple_ternary,
+    args: { weight: 1, gamma: 0.25 }
+  }
+  - {
+    name: photo_teacher,
+    args: { weight: 1, gamma: 0.25 }
+  }
+  - {
+    name: flow_distill_res,
+    args: { weight: 0.005, beta: 1, gamma: 0.5 }
+  }
+  - {
+    name: flow_teacher_reg,
+    args: { weight: 0.005, gamma: 0.5 }
+  }
+  - {
+    name: flow_smooth_tea1,
+    args: { weight: 0.05, gamma: 0.5, weight_type: gaussian, edge_constant: 150 }
+  }
+max_epoch: 400
+
+validate_every: 10
+save_every: 10
+vis_every: 10
+
+seed: 1234
+
+dist_url: env://

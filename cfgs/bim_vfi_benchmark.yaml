@@ -1,0 +1,51 @@
+exp_name: original
+mode: benchmark
+resume: pretrained/bim_vfi.pth
+model:
+  name: bim_vfi
+  args:
+    pyr_level: 3
+    feat_channels: 32
+
+benchmark_dataset:
+  name:
+#    - vimeo
+#    - snu_film
+    - snu_film_arb
+    - xtest
+  args:
+    root_path:
+#      - ../data/vimeo_triplet
+#      - ../data/snufilm
+      - ../data/snufilm
+      - ../data/X4K1000FPS/test
+    split:
+#      - [
+#        test
+#      ]
+#      - [
+#        easy,
+#        medium,
+#        hard,
+#        extreme
+#      ]
+      - [
+        medium,
+        hard,
+        extreme
+      ]
+      - [
+        single,
+        multiple
+      ]
+    pyr_level:
+#      - 3
+#      - 5
+      - 5
+      - 7
+  save_imgs: False
+
+max_epoch: 400
+seed: 1234
+
+dist_url: env://

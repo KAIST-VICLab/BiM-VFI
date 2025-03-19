@@ -1,0 +1,20 @@
+exp_name: original
+mode: demo
+resume: pretrained/bim_vfi.pth
+model:
+  name: bim_vfi
+  args:
+    pyr_level: 3
+    feat_channels: 32
+
+
+demo_dataset:
+  name: demo
+  args:
+    root_path: ./assets/demo
+
+
+max_epoch: 400
+seed: 1234
+
+dist_url: env://
