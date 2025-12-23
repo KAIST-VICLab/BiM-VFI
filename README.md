@@ -2,7 +2,7 @@
 <h2>BiM-VFI (CVPR 2025)</h2>
 
 <div>    
-    <a href='https://sites.google.com/view/geunhyukyouk/' target='_blank'>Wonyong Seo</a><sup>1</sup>&nbsp;
+    Wonyong Seo</a><sup>1</sup>&nbsp;
     <a href='https://sites.google.com/view/ozbro/' target='_blank'>Jihyong Oh</a><sup>† 2</sup>&nbsp;
     <a href='https://www.viclab.kaist.ac.kr/' target='_blank'>Munchurl Kim</a><sup>† 1</sup>
 </div>
