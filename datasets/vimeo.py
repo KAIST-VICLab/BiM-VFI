@@ -54,7 +54,7 @@ class Vimeo(Dataset):
             if random.random() > 0.5:
                 img0, imgt, img1 = random_hor_flip(img0, imgt, img1)
             if random.random() > 0.5:
-                img0, imgt, img1, flowt0, flowt1, dis0, dis1 = random_ver_flip(img0, imgt, img1)
+                img0, imgt, img1 = random_ver_flip(img0, imgt, img1)
             if random.random() > 0.5:
                 img0, imgt, img1 = random_color_permutation(img0, imgt, img1)
             if random.random() > 0.5:
